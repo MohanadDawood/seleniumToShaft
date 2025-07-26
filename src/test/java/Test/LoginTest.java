@@ -1,21 +1,22 @@
 package Test;
 
+import models.Credentials;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import pages.BaseTest;
 import pages.LoginPage;
+import utils.DriverFactory;
+import utils.JsonDataReader;
 
-public class LoginTest extends BaseTest {
+public class LoginTest {
 
 
-
-    String username = "Admin";
-    String password = "admin123";
+    WebDriver driver = DriverFactory.getDriver();
+    Credentials creds = JsonDataReader.readJsonFromResources("credentials.json", Credentials.class);
 
     @Test
     public void testValidLogin(){
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(username,password);
+        loginPage.login(creds.getUsername(),creds.getPassword());
     }
 
 
