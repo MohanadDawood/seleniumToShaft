@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 @CucumberOptions(
-        features = "src/test/java/resources/features",
+        features = "src/test/resources/features",
         glue = {"stepDefinitions", "hooks"},
         plugin = {"pretty", "html:target/cucumber-reports.html"},
         tags = "@Smoke"

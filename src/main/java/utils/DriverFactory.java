@@ -10,10 +10,10 @@ public class DriverFactory {
     private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static void initDriver() {
-        WebDriver localDriver = new ChromeDriver(); // or FirefoxDriver, etc.
-        localDriver.manage().window().maximize();
-        localDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.set(localDriver);
+        WebDriver webDriver = new ChromeDriver();
+        webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.set(webDriver);
     }
 
     public static WebDriver getDriver() {
@@ -21,7 +21,10 @@ public class DriverFactory {
     }
 
     public static void quitDriver() {
-        driver.get().quit();
-        driver.remove();
+        if (driver.get() != null) {
+            driver.get().quit();
+            driver.remove();
+        }
     }
+
 }

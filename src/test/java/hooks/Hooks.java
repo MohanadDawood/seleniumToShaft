@@ -9,11 +9,13 @@ public class Hooks {
 
     @Before
     public void setup() {
+        System.out.println(">>> [HOOK] Setting up driver");
         DriverFactory.initDriver();
     }
 
     @After
     public void tearDown() {
+        System.out.println(">>> [HOOK] Quitting driver");
         DriverFactory.quitDriver();
     }
 }
